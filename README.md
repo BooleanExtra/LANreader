@@ -2,7 +2,7 @@
 [<img src="https://img.shields.io/github/release/doraemoe/dureader.svg?display_name=tag">](https://github.com/Doraemoe/DuReader/releases/latest)
 [![Continuous Integration](https://github.com/Doraemoe/DuReader/actions/workflows/ci.yml/badge.svg)](https://github.com/Doraemoe/DuReader/actions/workflows/ci.yml)
 
-# LANreader
+# LANreader 17.0
 
 LANreader is an iOS manga reader for [LANraragi](https://github.com/Difegue/LANraragi)
 
@@ -11,7 +11,8 @@ LANreader is an iOS manga reader for [LANraragi](https://github.com/Difegue/LANr
 </a>
 
 Will be avaliable on App Store until March 23, 2026
-    
+
+This is a fork to support iOS 17.0 (iOS 17.2 was previously the lowest supported version)
 
 ## Interface
 
