@@ -27,10 +27,10 @@
       ],
       "versions": [
         {
-          "version": "v3.5.1+1",
-          "date": "2026-02-08T08:11:31",
-          "localizedDescription": "Lowered the minimum supported version of iOS to 17.0",
-          "downloadURL": "https://github.com/BooleanExtra/LANreader/releases/download/vv3.5.1+1/LANreader.ipa",
+          "version": "3.5.1",
+          "date": "2026-02-08T08:36:00",
+          "localizedDescription": "Lowered minimum iOS to 17.0",
+          "downloadURL": "https://github.com/BooleanExtra/LANreader/releases/download/v3.5.1/LANreader.ipa",
           "size": 8456727,
           "minOSVersion": "17.0"
         }
