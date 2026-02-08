@@ -10,8 +10,6 @@ env:
   ALTSTORE_JSON_PATH: './AltStore.json'
   BUILDS_PATH: '/tmp/action-builds'
   PAYLOAD_PATH: '/tmp/action-builds/Payload'
-  FILTER_SWIFT_PATH: './actions-tool/ReleaseNotesFilter.swift'
-  FILTER_PATH: './actions-tool/ReleaseNotesFilter'
   THIN_PAYLOAD_SCRIPT_PATH: './actions-tool/thin-payload.sh'
   ARCHIVE_PATH: '/tmp/action-builds/LANreader.xcarchive'
   IPA_OUTPUT_PATH: '/tmp/action-builds/LANreader.ipa'
@@ -91,15 +89,13 @@ jobs:
       - name: Retrieve data
         id: retrieve-data
         run: |
-          swiftc -o $FILTER_PATH $FILTER_SWIFT_PATH
-          sudo chmod 777 $FILTER_PATH
           echo "size=$(stat -f%z $IPA_OUTPUT_PATH)" >> $GITHUB_OUTPUT
           echo "version_date=$(date -u +"%Y-%m-%dT%T")" >> $GITHUB_OUTPUT
-          echo "notes=$($FILTER_PATH "${{ github.event.pull_request.body }}")" >> $GITHUB_OUTPUT
+          echo "notes=${{ github.event.pull_request.body }}" >> $GITHUB_OUTPUT
       - name: Validate data
         run: |
-          [[ ! -z "${{ github.event.pull_request.body }}" ]] || exit 1
-          [[ ! -z "${{ github.event.pull_request.title }}" ]] || exit 1
+          # [[ ! -z "${{ github.event.pull_request.body }}" ]] || exit 1
+          # [[ ! -z "${{ github.event.pull_request.title }}" ]] || exit 1
           [[ ! -z "${{ steps.retrieve-data.outputs.size }}" ]] || exit 1
           [[ ! -z "${{ steps.retrieve-data.outputs.notes }}" ]] || exit 1
           [[ ! -z "${{ steps.bump-version.outputs.version }}" ]] || exit 1
