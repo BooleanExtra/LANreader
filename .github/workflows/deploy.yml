@@ -2,7 +2,7 @@ name: Deploy
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [closed]
 env:
   DEVELOPER_DIR: /Applications/Xcode_26.0.1.app
