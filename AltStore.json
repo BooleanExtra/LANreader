@@ -1,0 +1,61 @@
+{
+  "name": "LANreader AltStore Source",
+  "identifier": "com.jif.LANreader.altstore",
+  "subtitle": "Read your manga from LANraragi with LANreader.",
+  "description": "LANreader is an iOS manga reader for LANraragi",
+  "iconURL": "https://github.com/BooleanExtra/LANreader/blob/master/LANreader/Assets.xcassets/AppIcon.appiconset/icon.png?raw=true",
+  "website": "https://github.com/BooleanExtra/LANreader",
+  "tintColor": "000000",
+  "featuredApps": ["com.jif.LANreader.3"],
+  "apps": [
+    {
+      "name": "LANreader",
+      "bundleIdentifier": "com.jif.LANreader.3",
+      "developerName": "Doraemoe",
+      "subtitle": "LANreader is an iOS manga reader for LANraragi",
+      "localizedDescription": "LANreader is an iOS manga reader for LANraragi",
+      "iconURL": "https://github.com/BooleanExtra/LANreader/blob/master/LANreader/Assets.xcassets/AppIcon.appiconset/icon.png?raw=true",
+      "tintColor": "000000",
+      "screenshotURLs": [
+        "https://private-user-images.githubusercontent.com/1129569/492606034-ad036018-2b78-4e7c-bff5-dc0f6f0d5bf9.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzA1MTU2NjUsIm5iZiI6MTc3MDUxNTM2NSwicGF0aCI6Ii8xMTI5NTY5LzQ5MjYwNjAzNC1hZDAzNjAxOC0yYjc4LTRlN2MtYmZmNS1kYzBmNmYwZDViZjkucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDhUMDE0OTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTMzMjM0ZmM0M2VmOGUxYTY1Mjc5MjE3Mzk2OTEwZTM2OTg0MzM2ZmM2MDM0ZmFmMDkzZjhlY2NjNGY4Y2VlMCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.24z3lzKbEv5fAqfek0-Y6xma9XnrLXbz-JtSxwPThKM",
+        "https://private-user-images.githubusercontent.com/1129569/492606061-5bd0b753-7370-4c7b-b761-73d6989763a7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzA1MTU2NjUsIm5iZiI6MTc3MDUxNTM2NSwicGF0aCI6Ii8xMTI5NTY5LzQ5MjYwNjA2MS01YmQwYjc1My03MzcwLTRjN2ItYjc2MS03M2Q2OTg5NzYzYTcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDhUMDE0OTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTUyMTA4ZGRmNDA2MjU4NDMwZDBhMzAxMTViNWNmMmY1ZGVjMTRhOWI3NDIxMjIxOTA1Zjg1YmU1ZmVmNzBiNyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.e7sl92JIInIDL6uflzQwAJZjElffbtuWIuyAaz8pbNw",
+        "https://private-user-images.githubusercontent.com/1129569/492606087-57e1e3fd-389e-4c18-8e7a-a1c9e02e9303.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzA1MTU2NjUsIm5iZiI6MTc3MDUxNTM2NSwicGF0aCI6Ii8xMTI5NTY5LzQ5MjYwNjA4Ny01N2UxZTNmZC0zODllLTRjMTgtOGU3YS1hMWM5ZTAyZTkzMDMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDhUMDE0OTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjRkNmFkMjE1MGVkNjRjN2VjZDQ1ZjU5MTkzN2RmNGQ5YjdlMjYzOWM3Y2U1YWJjZmJhMDg3OGEwZmNkYzVjMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.Ij-VeWGbC6fh87wO7-42GW1nG3v0w72epsF6cwPS4Ws",
+        "https://private-user-images.githubusercontent.com/1129569/492606136-270575d1-2467-4cde-ba7d-78f775a4305f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzA1MTU2NjUsIm5iZiI6MTc3MDUxNTM2NSwicGF0aCI6Ii8xMTI5NTY5LzQ5MjYwNjEzNi0yNzA1NzVkMS0yNDY3LTRjZGUtYmE3ZC03OGY3NzVhNDMwNWYucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDhUMDE0OTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZDM4YTAyZGRmOGIxZDhhNDU2ZWNkNWNlM2IzYTUxN2QyZGM3ODc0NGM0ZDdiMDJkODM0OTllZTMzYmI3MTBkMiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.pLRPCX4qY76KXaGgyNfUSrc8yi2avt5KCcLN0p147GU",
+        "https://private-user-images.githubusercontent.com/1129569/492606165-2bf05109-b1bd-4138-ba6d-c4801b41a4f3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzA1MTU2NjUsIm5iZiI6MTc3MDUxNTM2NSwicGF0aCI6Ii8xMTI5NTY5LzQ5MjYwNjE2NS0yYmYwNTEwOS1iMWJkLTQxMzgtYmE2ZC1jNDgwMWI0MWE0ZjMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMDhUMDE0OTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTZjZjE2YzBlNzJkYTNjMmJmMmU5MmMxOTQxM2VmOTBjZDU4MWE4YmE2OGVlOTdmZGVjOGVkYzc2YjI5YTJjNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.KicvTZwI-1a1JDfhsH1bmuQ5vxHZoEjZIx3EkkJXLvE"
+      ],
+      "versions": [
+        {
+          "version": "3.5.1",
+          "date": "2026-02-07T21:33:03",
+          "localizedDescription": "1. feat: Added back support for iOS 17.0 (iOS 17.2 was previously the lowest supported version)",
+          "downloadURL": "https://github.com/BooleanExtra/LANreader/releases/download/v3.5.1/LANreader.ipa",
+          "size": 10013333,
+          "minOSVersion": "17.0"
+        }
+      ],
+      "appPermissions": {
+        "privacy": [
+          {
+            "name": "FaceID",
+            "usageDescription": "We need this permission to provide Face ID option while unlocking the App."
+          },
+          {
+            "name": "PhotoLibraryAdd",
+            "usageDescription": "We need this permission to save images to your photo library."
+          }
+        ]
+      }
+    }
+  ],
+  "news": [
+    {
+      "title": "LANreader Now Available!",
+      "identifier": "lanreader-now-available",
+      "caption": "A manga reader for LANraragi",
+      "tintColor": "000000",
+      "appID": "app.lanreader17",
+      "date": "2026-02-07",
+      "notify": false
+    }
+  ]
+}
