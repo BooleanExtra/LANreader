@@ -6,7 +6,9 @@
   "iconURL": "https://github.com/BooleanExtra/LANreader/blob/master/LANreader/Assets.xcassets/AppIcon.appiconset/icon.png?raw=true",
   "website": "https://github.com/BooleanExtra/LANreader",
   "tintColor": "000000",
-  "featuredApps": ["com.jif.LANreader.3"],
+  "featuredApps": [
+    "com.jif.LANreader.3"
+  ],
   "apps": [
     {
       "name": "LANreader",
@@ -25,11 +27,11 @@
       ],
       "versions": [
         {
-          "version": "3.5.1",
-          "date": "2026-02-07T21:33:03",
-          "localizedDescription": "1. feat: Added back support for iOS 17.0 (iOS 17.2 was previously the lowest supported version)",
-          "downloadURL": "https://github.com/BooleanExtra/LANreader/releases/download/v3.5.1/LANreader.ipa",
-          "size": 10013333,
+          "version": "v3.5.1+1",
+          "date": "2026-02-08T08:11:31",
+          "localizedDescription": "Lowered the minimum supported version of iOS to 17.0",
+          "downloadURL": "https://github.com/BooleanExtra/LANreader/releases/download/vv3.5.1+1/LANreader.ipa",
+          "size": 8456727,
           "minOSVersion": "17.0"
         }
       ],
