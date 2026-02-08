@@ -8,6 +8,7 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_26.0.1.app
   SCHEME_NAME: "LANreader"
   ALTSTORE_JSON_PATH: "./AltStore.json"
+  UPSTREAM_REPO_URL: "https://github.com/Doraemoe/LANreader.git"
   BUILDS_PATH: "/tmp/action-builds"
   PAYLOAD_PATH: "/tmp/action-builds/Payload"
   THIN_PAYLOAD_SCRIPT_PATH: "./actions-tool/thin-payload.sh"
@@ -34,9 +35,11 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      - name: Get latest tag
+      - name: Get latest upstream tag
         id: latest
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        run: |
+          latest_tag=$(git ls-remote --tags --sort="v:refname" "${{ env.UPSTREAM_REPO_URL }}" | awk -F/ '!/\^\{\}$/ {print $3}' | tail -n 1)
+          echo "tag=$latest_tag" >> "$GITHUB_OUTPUT"
       - name: extract version and build number
         id: version
         run: |
