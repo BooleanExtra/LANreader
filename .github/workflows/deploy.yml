@@ -6,13 +6,13 @@ on:
     types: [closed]
 env:
   DEVELOPER_DIR: /Applications/Xcode_26.0.1.app
-  SCHEME_NAME: 'LANreader'
-  ALTSTORE_JSON_PATH: './AltStore.json'
-  BUILDS_PATH: '/tmp/action-builds'
-  PAYLOAD_PATH: '/tmp/action-builds/Payload'
-  THIN_PAYLOAD_SCRIPT_PATH: './actions-tool/thin-payload.sh'
-  ARCHIVE_PATH: '/tmp/action-builds/LANreader.xcarchive'
-  IPA_OUTPUT_PATH: '/tmp/action-builds/LANreader.ipa'
+  SCHEME_NAME: "LANreader"
+  ALTSTORE_JSON_PATH: "./AltStore.json"
+  BUILDS_PATH: "/tmp/action-builds"
+  PAYLOAD_PATH: "/tmp/action-builds/Payload"
+  THIN_PAYLOAD_SCRIPT_PATH: "./actions-tool/thin-payload.sh"
+  ARCHIVE_PATH: "/tmp/action-builds/LANreader.xcarchive"
+  IPA_OUTPUT_PATH: "/tmp/action-builds/LANreader.ipa"
 permissions: write-all
 jobs:
   Deploy:
@@ -27,7 +27,7 @@ jobs:
           ref: ${{ github.ref }}
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: "2.6"
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -103,12 +103,12 @@ jobs:
       - name: Release to GitHub
         uses: softprops/action-gh-release@v2
         with:
-         fail_on_unmatched_files: true
-         files: ${{ env.IPA_OUTPUT_PATH }}
-         token: ${{ secrets.GITHUB_TOKEN }}
-         body: ${{ github.event.pull_request.body }}
-         name: ${{ github.event.pull_request.title }}
-         tag_name: 'v${{ steps.bump-version.outputs.version }}'
+          fail_on_unmatched_files: true
+          files: ${{ env.IPA_OUTPUT_PATH }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: ${{ github.event.pull_request.body }}
+          name: ${{ github.event.pull_request.title }}
+          tag_name: "v${{ steps.bump-version.outputs.version }}"
       - name: Commit bump version
         run: |
           git add .
@@ -127,6 +127,7 @@ jobs:
           git add .
           git commit -m "Update AltStore.json"
           git push origin HEAD
+
 #      - name: Post release notes
 #        run: |
 #         curl https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
