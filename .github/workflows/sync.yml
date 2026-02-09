@@ -99,9 +99,9 @@ jobs:
           echo "pull_request_state=$pr"
         shell: bash
 
-      - name: Checkout main
+      - name: Checkout master
         run: |
-          git checkout main
+          git checkout master
 
       - name: Reset sync_upstream branch
         run: |
