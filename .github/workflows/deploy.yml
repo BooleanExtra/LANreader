@@ -40,6 +40,19 @@ jobs:
         run: |
           latest_tag=$(git ls-remote --tags --sort="v:refname" "${{ env.UPSTREAM_REPO_URL }}" | awk -F/ '!/\^\{\}$/ {print $3}' | tail -n 1)
           echo "tag=$latest_tag" >> "$GITHUB_OUTPUT"
+      - name: Get upstream release info
+        id: upstream-release
+        run: |
+          release_info=$(curl -s "https://api.github.com/repos/Doraemoe/LANreader/releases/tags/${{ steps.latest.outputs.tag }}")
+          release_title=$(echo "$release_info" | jq -r '.name')
+          release_body=$(echo "$release_info" | jq -r '.body')
+          echo "title=$release_title" >> "$GITHUB_OUTPUT"
+          delimiter=$(openssl rand -hex 8)
+          {
+            echo "body<<${delimiter}"
+            echo "$release_body"
+            echo "${delimiter}"
+          } >> "$GITHUB_OUTPUT"
       - name: extract version and build number
         id: version
         run: |
@@ -118,9 +131,11 @@ jobs:
           git commit -m "Bump version"
           git push origin HEAD
       - name: Update AltStore.json
+        env:
+          UPSTREAM_RELEASE_BODY: ${{ steps.upstream-release.outputs.body }}
         run: |
           echo "`jq '.apps[0].versions[0].size=${{ steps.retrieve-data.outputs.size }}' $ALTSTORE_JSON_PATH`" > $ALTSTORE_JSON_PATH
-          echo "`jq '.apps[0].versions[0].localizedDescription="${{ steps.retrieve-data.outputs.notes }}"' $ALTSTORE_JSON_PATH`" > $ALTSTORE_JSON_PATH
+          jq --arg desc "$UPSTREAM_RELEASE_BODY" '.apps[0].versions[0].localizedDescription = $desc' $ALTSTORE_JSON_PATH > /tmp/altstore_tmp.json && mv /tmp/altstore_tmp.json $ALTSTORE_JSON_PATH
           echo "`jq '.apps[0].versions[0].date="${{ steps.retrieve-data.outputs.version_date }}"' $ALTSTORE_JSON_PATH`" > $ALTSTORE_JSON_PATH
           echo "`jq '.apps[0].versions[0].version="${{ steps.bump-version.outputs.version }}"' $ALTSTORE_JSON_PATH`" > $ALTSTORE_JSON_PATH
           echo "`jq '.apps[0].versions[0].minOSVersion="17.0"' $ALTSTORE_JSON_PATH`" > $ALTSTORE_JSON_PATH
