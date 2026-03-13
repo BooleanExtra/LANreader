@@ -61,16 +61,32 @@ actor LANraragiService {
         return session
     }
 
-    func verifyClient(url: String, apiKey: String) async -> DataTask<ServerInfo> {
-        self.url = url
+    private func makeSession(apiKey: String) -> (AuthInterceptor, Session) {
         let interceptor = AuthInterceptor(apiKey: apiKey)
-        self.authInterceptor = interceptor
-        self.session = Session(interceptor: interceptor)
+        let session = Session(interceptor: interceptor)
+        return (interceptor, session)
+    }
+
+    private func fetchServerInfo(url: String, apiKey: String) async throws -> VerificationResult {
+        let (interceptor, session) = makeSession(apiKey: apiKey)
         let cacher = ResponseCacher(behavior: .doNotCache)
-        return session.request("\(self.url)/api/info")
+        let serverInfo = try await session.request("\(url)/api/info")
             .cacheResponse(using: cacher)
             .validate(statusCode: 200...200)
             .serializingDecodable(ServerInfo.self, decoder: self.snakeCaseEncoder)
+            .value
+
+        return VerificationResult(interceptor: interceptor, session: session, serverInfo: serverInfo)
+    }
+
+    func verifyClient(url: String, apiKey: String) async throws -> ServerInfo {
+        let result = try await fetchServerInfo(url: url, apiKey: apiKey)
+
+        self.url = url
+        self.authInterceptor = result.interceptor
+        self.session = result.session
+        updateAPIVersionFlag(serverVersion: result.serverInfo.version)
+        return result.serverInfo
     }
 
     func checkServerVersionAtStartup() async {
@@ -83,8 +99,8 @@ actor LANraragiService {
         }
 
         do {
-            let serverInfo = try await verifyClient(url: storedUrl, apiKey: storedApiKey).value
-            updateAPIVersionFlag(serverVersion: serverInfo.version)
+            let result = try await fetchServerInfo(url: storedUrl, apiKey: storedApiKey)
+            updateAPIVersionFlag(serverVersion: result.serverInfo.version)
         } catch {
             Self.logger.warning("Failed to check server version at startup: \(error.localizedDescription)")
         }
@@ -251,12 +267,13 @@ actor LANraragiService {
         }
     }
 
-    func fetchArchivePage(page: String, pageNumber: Int) -> DownloadRequest {
+    private func resolveArchivePageURL(page: String) -> URL {
         let baseURL = getDomainURL(from: self.url)
-            // Combine with the page path parameter
-        let fullURL = URL(string: page, relativeTo: baseURL)!
+        return URL(string: page, relativeTo: baseURL)!.absoluteURL
+    }
 
-        let request = URLRequest(url: fullURL)
+    func fetchArchivePage(page: String, pageNumber: Int) -> DownloadRequest {
+        let request = URLRequest(url: resolveArchivePageURL(page: page))
         return session.download(request, to: { tempUrl, rsp in
             let destName: String
             if let filename = rsp.suggestedFilename {
@@ -275,7 +292,7 @@ actor LANraragiService {
     }
 
     func backgroupFetchArchivePage(page: String, archiveId: String, pageNumber: Int) {
-        var request = URLRequest(url: URL(string: "\(url)/\(page)")!)
+        var request = URLRequest(url: resolveArchivePageURL(page: page))
         request.setValue("Bearer \(authInterceptor.encodedApiKey())", forHTTPHeaderField: "Authorization")
         request.setValue(archiveId, forHTTPHeaderField: "X-Archive-Id")
         request.setValue("\(pageNumber)", forHTTPHeaderField: "X-Page-Number")
@@ -407,4 +424,10 @@ extension DependencyValues {
     get { self[LANraragiService.self] }
     set { self[LANraragiService.self] = newValue }
   }
+}
+
+private struct VerificationResult {
+    let interceptor: AuthInterceptor
+    let session: Session
+    let serverInfo: ServerInfo
 }
